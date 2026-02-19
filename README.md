@@ -23,7 +23,8 @@ The system follows a batch-processing architecture:
 3. The processing service reads data from the database and performs batch transformations.
 4. Processed data becomes available for analytics or machine learning use cases.
 
-This modular design reflects real-world data engineering practices, emphasizing reproducibility, maintainability, and separation of concerns.
+The services are orchestrated using Docker Compose, which ensures that the ingestion and processing components communicate with the PostgreSQL database in a reproducible and integrated environment.
+
 
 ---
 

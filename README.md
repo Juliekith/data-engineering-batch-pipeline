@@ -8,6 +8,8 @@ for a retail analytics use case.
 - Processing service: performs batch ETL and aggregation
 - PostgreSQL database: stores raw and curated data
 
+git clone https://github.com/Juliekith/data-engineering-batch-pipeline.git
+
 ## How to run
 1. Copy `.env.example` to `.env`
 2. Run `docker-compose up --build`

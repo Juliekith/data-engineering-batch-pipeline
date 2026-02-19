@@ -5,6 +5,7 @@ services:
   postgres:
     image: postgres:15
     container_name: retail_postgres
+    restart: always
     environment:
       POSTGRES_DB: retail_db
       POSTGRES_USER: postgres
@@ -13,10 +14,12 @@ services:
       - "5432:5432"
 
   ingestion-service:
-    build: ./Ingestion-Service
+    build:
+      context: ./Ingestion-Service
     container_name: ingestion_service
     depends_on:
       - postgres
+    restart: on-failure
     environment:
       DB_HOST: postgres
       DB_NAME: retail_db
@@ -24,10 +27,12 @@ services:
       DB_PASSWORD: postgres
 
   processing-service:
-    build: ./Processing-Service
+    build:
+      context: ./Processing-Service
     container_name: processing_service
     depends_on:
       - postgres
+    restart: on-failure
     environment:
       DB_HOST: postgres
       DB_NAME: retail_db
